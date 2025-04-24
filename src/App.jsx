@@ -7,13 +7,15 @@ import Contact from './pages/Contact';
 export default function App() {
   return (
     <Router>
-      <Navbar />
-      <div className="p-6">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow px-6 py-10">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
       </div>
     </Router>
   );
