@@ -52,7 +52,7 @@ export default function Notes() {
   return (
     <div className="flex flex-col items-center justify-center px-4 py-6">
       <h1 className="text-4xl font-bold mb-6">Chord Picker</h1>
-
+      <p>This tool can be used to figure out the midi values and frequencies in Hz for all of the common 3 and 4 note chords used in western classical music.  Currently enharmonic equivalents are displayed and all frequencies are given in equal temperament with A = 440.</p>
       <ChordSelector
         rootNote={rootNote}
         setRootNote={setRootNote}
@@ -64,6 +64,7 @@ export default function Notes() {
         setOctave={setOctave}
       />
 
+      
       <ChordInfoTable chordNotes={chordNotes} />
 
       <PlayButton chordNotes={chordNotes} synthType={synthType} />

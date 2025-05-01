@@ -1,17 +1,25 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <div className="navbar bg-base-200 px-6">
-      <div className="flex-1">
-        <Link to="/" className="text-xl font-bold">My Portfolio</Link>
-      </div>
-      <div className="flex-none">
-        <ul className="menu menu-horizontal gap-4">
-          <li><Link to="/projects">Projects</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-        </ul>
-      </div>
+    <div className="navbar bg-base-400 shadow-md px-6 flex justify-end">
+      <ul className="flex flex-row list-none">
+        <li>
+          <Link to="/" className="text-2xl font-bold text-primary">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/projects" className="hover:text-primary">
+            Projects
+          </Link>
+        </li>
+        <li>
+          <Link to="/contact" className="hover:text-primary">
+            Contact
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 }
