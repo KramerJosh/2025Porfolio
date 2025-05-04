@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import AboutMe from '../components/AboutMe'
 
 export default function Home() {
   return (
@@ -9,6 +10,8 @@ export default function Home() {
       transition={{ duration: 0.5 }}
     >
       <h1 className="text-4xl font-bold">Welcome to my portfolio!</h1>
+      <AboutMe />
     </motion.div>
+    
   );
 }
