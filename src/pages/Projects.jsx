@@ -25,9 +25,9 @@ export default function Projects() {
           link="https://weatherwizard-212z.onrender.com/"
         />
         <ProjectCard
-          title="Note Picker"
-          description="work in progress"
-          image="\ForTune.png"
+          title="Chord Picker"
+          description="Find the frequencies in Hz and Midi values for various chords."
+          image="/ChordPicker.png"
           link="\notes"
         />
       </div>
@@ -35,8 +35,8 @@ export default function Projects() {
       {/* --- New DoG Project Section --- */}
       <ProjectCard
         title="DoG Image Filter"
-        description="Upload a photo and extract outlines using a Difference of Gaussians filter"
-        image="/placeholder-dog.png"
+        description="Upload a photo and extract outlines using a Difference of Gaussians filter - experimental work in progress!"
+        image="/DOG.png"
         link="/dog"
       />
     </div>

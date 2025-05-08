@@ -9,6 +9,8 @@ export default function Contact() {
       transition={{ duration: 0.5 }}
     >
       <h1 className="text-4xl font-bold">Get in Touch!</h1>
+      <h2 className="text-4xl font-bold">Email</h2>
+      <h3 className="text-4xl font-bold"><a href='mailto:thatsoundguyjosh@gmail.com'>thatsoundguyjosh@gmail.com</a></h3>
     </motion.div>
   );
 }
