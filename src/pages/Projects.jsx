@@ -30,15 +30,13 @@ export default function Projects() {
           image="/ChordPicker.png"
           link="\notes"
         />
+        <ProjectCard
+          title="DoG Image Filter"
+          description="Upload a photo and extract outlines using a Difference of Gaussians filter - experimental work in progress!"
+          image="/DOG.png"
+          link="/dog"
+        />
       </div>
-
-      {/* --- New DoG Project Section --- */}
-      <ProjectCard
-        title="DoG Image Filter"
-        description="Upload a photo and extract outlines using a Difference of Gaussians filter - experimental work in progress!"
-        image="/DOG.png"
-        link="/dog"
-      />
     </div>
   );
 }

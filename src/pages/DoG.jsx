@@ -19,9 +19,15 @@ export default function DoG() {
   }, [sigma1, sigma2]);
 
   return (
-    <div className="flex flex-col items-center px-4 gap-6">
+    <div className="flex flex-col items-center px-4">
       <h1 className="text-3xl font-bold mt-6">Difference of Gaussians Tool</h1>
-
+      <div className='mb-10 items-center content-center text-center'>
+      <p>This page allows you to upload an image and then set two sigma values.</p>
+      <p>Sigma values represent the amount of blur applied to the image.  Once the two blurs are applied, the resulting images have their pixels subtracted.</p>
+      <p>After subtraction, we're left with a black image where the blurred images have the same pixel value, and crisp lines where the values differ.</p>
+      <p>This can be used for artistic purposes, but it's also an important pre-processing step in machine learning.</p>
+      <p>This tool is still a work in progress, and for now I don't recommend using sigma values greater than 7.  This page may crash, apologies ahead of time!</p>
+    </div>
       <ImageUploader onImageUpload={setImage} />
 
       {image && (
