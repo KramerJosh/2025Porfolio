@@ -1,19 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function AboutMe() {
+export default function HomePortfolio() {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <div className="flex items-center flex-col md:flex-row p-6">
-      <div className="mb-6 md:mb-0 md:mr-6">
-        <img
-          src="/pfp.jpg"
-          alt="Josh Kramer, Headshot Picture"
-          className="min-w-40 max-w-xs rounded-lg shadow-md"
-        />
-      </div>
-
       <motion.div
         className="flex flex-col items-center w-full sm:w-80 border border-gray-300 rounded-xl p-4 cursor-pointer"
         onClick={() => setExpanded(!expanded)}
@@ -22,7 +14,7 @@ export default function AboutMe() {
         whileTap={{ scale: 0.98 }}
       >
         <p className="text-lg font-medium mb-2">
-          I'm Josh Kramer, a Web Developer and Live Sound Engineer based out of Brooklyn, NY.
+          Click here to view my currently featured project
         </p>
 
         <AnimatePresence>
@@ -32,16 +24,16 @@ export default function AboutMe() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="overflow-hidden text-sm"
+              className="overflow-hidden"
             >
+              <h1 className="mt-2">
+                <a href="https://fortune-tell.netlify.app/" rel="noopener" target="_blank">ForTune</a>
+              </h1>
               <p className="mt-2">
-                Most of my programming and web work involves corporate CMS administration at a law firm in NYC.
+                Fortune is a collaboration between myself, Roni Rutan, Ryan Clouser, and Tim Ehli.
               </p>
               <p className="mt-2">
-                This website hosts some of my <a href="/projects">personal projects</a> - a couple of which are works in progress.
-              </p>
-              <p className="mt-2">
-                Outside of web development, I work as a live sound engineer and stagehand.
+                We use Gemini AI's API to create tarot readings, and ToneJS to give each reading a unique chord progression.
               </p>
             </motion.div>
           )}

@@ -8,6 +8,16 @@ const getNoteFrequency = (noteName) => {
   return Tone.Frequency(noteName).toFrequency();
 };
 
+const enharmonicMap = [
+  "C", "C#/Db", "D", "D#/Eb", "E", "F",
+  "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"
+];
+
+const noteBaseNames = [
+  "C", "C#", "D", "D#", "E", "F",
+  "F#", "G", "G#", "A", "A#", "B"
+];
+
 const getChordNotes = (root, type, octave) => {
   const chords = {
     Major: [0, 4, 7],
@@ -23,18 +33,21 @@ const getChordNotes = (root, type, octave) => {
     Add9: [0, 2, 4, 7],
   };
 
-  const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-  const rootIndex = notes.indexOf(root);
+  // Normalize root from "C#/Db" to "C#"
+  const normalizedRoot = root.split("/")[0];
+  const rootIndex = noteBaseNames.indexOf(normalizedRoot);
   const chordIntervals = chords[type] || [];
 
   return chordIntervals.map((interval) => {
     const noteIndex = (rootIndex + interval) % 12;
     const octaveShift = Math.floor((rootIndex + interval) / 12);
     const finalOctave = octave + octaveShift;
-    const noteName = notes[noteIndex] + finalOctave;
-    const midi = Tone.Frequency(noteName).toMidi();
-    const frequency = getNoteFrequency(noteName);
-    return { name: noteName, midi, frequency };
+    const displayName = enharmonicMap[noteIndex] + finalOctave;
+    const toneName = noteBaseNames[noteIndex] + finalOctave;
+    const frequency = getNoteFrequency(toneName);
+    const midi = Tone.Frequency(toneName).toMidi();
+
+    return { name: displayName, midi, frequency };
   });
 };
 
@@ -52,7 +65,9 @@ export default function Notes() {
   return (
     <div className="flex flex-col items-center justify-center px-4 py-6">
       <h1 className="text-4xl font-bold mb-6">Chord Picker</h1>
-      <p>This tool can be used to figure out the midi values and frequencies in Hz for all of the common 3 and 4 note chords used in western classical music.  Currently enharmonic equivalents are displayed and all frequencies are given in equal temperament with A = 440.</p>
+      <div className="w-1/2 text-center mb-5">
+        <p>This tool can be used to figure out the MIDI values and frequencies in Hz for all of the common 3- and 4-note chords used in Western classical music. Enharmonic equivalents are displayed, and all frequencies are given in equal temperament with A = 440 Hz.</p>
+      </div>
       <ChordSelector
         rootNote={rootNote}
         setRootNote={setRootNote}
@@ -64,9 +79,7 @@ export default function Notes() {
         setOctave={setOctave}
       />
 
-      
       <ChordInfoTable chordNotes={chordNotes} />
-
       <PlayButton chordNotes={chordNotes} synthType={synthType} />
     </div>
   );
